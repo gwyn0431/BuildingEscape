@@ -29,7 +29,7 @@ void AProjectile::BeginPlay()
 
 void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
 {
-	SetRootComponent(ProjectileMovement);
+	// TODO Do i need to set another root component before destroy?
 	CollisionMesh->DestroyComponent();
 
 	FTimerHandle Timer;
