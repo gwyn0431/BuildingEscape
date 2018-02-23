@@ -7,14 +7,6 @@
 void AMainPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-	AimingComponent = GetPawn()->FindComponentByClass<UAimingComponent>();
-	if (!ensure(AimingComponent)) 
-	{ 
-		UE_LOG(LogTemp, Warning, TEXT("I CAN'T FIND COMPONENT!"))
-		return; 
-	}
-
-	FoundAimingComponent(AimingComponent);
 }
 
 void AMainPlayerController::Tick(float DeltaTime)
@@ -23,8 +15,20 @@ void AMainPlayerController::Tick(float DeltaTime)
 	AimTowardsCrosshair();
 }
 
+void AMainPlayerController::SetAimingComponent()
+{
+	AimingComponent = GetPawn()->FindComponentByClass<UAimingComponent>();
+	if (!ensure(AimingComponent)) // TODO Solve AimingComponent founding issue
+	{
+		UE_LOG(LogTemp, Warning, TEXT("I CAN'T FIND COMPONENT!"))
+			return;
+	}
+}
+
 void AMainPlayerController::AimTowardsCrosshair()
 {
+	// AimingComponent = GetPawn()->FindComponentByClass<UAimingComponent>();
+
 	if (!ensure(AimingComponent)) { return; }
 
 	FVector HitLocation; // Out parameter

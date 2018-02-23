@@ -114,7 +114,7 @@ void UAimingComponent::Fire()
 {
 	if (FiringState == EFiringState::Locked || FiringState == EFiringState::Aiming)
 	{
-		if (!ensure(Barrel && ProjectileBlueprint)) {  return; }
+		if (!ensure(Barrel && ProjectileBlueprint)) { return; }
 
 		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
 			ProjectileBlueprint,
