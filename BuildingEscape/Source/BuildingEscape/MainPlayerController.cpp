@@ -20,15 +20,12 @@ void AMainPlayerController::SetAimingComponent()
 	AimingComponent = GetPawn()->FindComponentByClass<UAimingComponent>();
 	if (!ensure(AimingComponent)) // TODO Solve AimingComponent founding issue
 	{
-		UE_LOG(LogTemp, Warning, TEXT("I CAN'T FIND COMPONENT!"))
-			return;
+		return;
 	}
 }
 
 void AMainPlayerController::AimTowardsCrosshair()
 {
-	// AimingComponent = GetPawn()->FindComponentByClass<UAimingComponent>();
-
 	if (!ensure(AimingComponent)) { return; }
 
 	FVector HitLocation; // Out parameter

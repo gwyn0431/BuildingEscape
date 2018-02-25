@@ -53,7 +53,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	if (!PhysicsHandle) { return; }
-	// If the physics handle is attached
+	// If the physics handle is attached & if it's holding something
 	if (PhysicsHandle->GrabbedComponent) {
 		// move the object we're holding
 		PhysicsHandle->SetTargetLocation(GetReachLineEnd());
@@ -89,6 +89,7 @@ const FHitResult UGrabber::GetFirstPhysicsBodyInReach()
 	/// Line-trace (AKA ray-cast) out to reach distance
 	FHitResult HitResult;
 	FCollisionQueryParams TraceParameters(FName(TEXT("")), false, GetOwner());
+
 	GetWorld()->LineTraceSingleByObjectType(
 		OUT HitResult,
 		GetReachLineStart(),
